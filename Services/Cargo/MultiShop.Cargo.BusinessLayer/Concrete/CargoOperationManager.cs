@@ -11,9 +11,9 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
 {
     public class CargoOperationManager : ICargoOperationService
     {
-        private readonly ICarggoOperationDal _cargoOperationDal;
+        private readonly ICargoOperationDal _cargoOperationDal;
 
-        public CargoOperationManager(ICarggoOperationDal cargoOperationDal)
+        public CargoOperationManager(ICargoOperationDal cargoOperationDal)
         {
             _cargoOperationDal = cargoOperationDal;
         }
