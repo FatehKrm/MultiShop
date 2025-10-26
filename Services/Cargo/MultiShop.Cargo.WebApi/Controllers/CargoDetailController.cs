@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.BusinessLayer.Abstract;
 using MultiShop.Cargo.DtoLayer.Dtos.CargoDetailDtos;
@@ -6,6 +7,7 @@ using MultiShop.Cargo.EntityLayer.Concrate;
 
 namespace MultiShop.Cargo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CargoDetailController : ControllerBase
