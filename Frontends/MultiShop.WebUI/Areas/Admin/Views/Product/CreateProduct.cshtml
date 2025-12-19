@@ -1,0 +1,39 @@
+﻿@using MultiShop.DtoLayer.CatalogDtos.ProductDtos
+@model CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>ürün ekleme sayfası</h4>
+                <p>ürün ile ilgili ekleme işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz</p>
+                <hr />
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Ürün adı</label>
+                        <input type="text" class="form-control" asp-for="ProductName" />
+                        <br />
+                        <label>Ürün fiyatı</label>
+                        <input type="text" asp-for="ProductPrice" class="form-control" />
+                        <br />
+                        <label>Ürün görseli</label>
+                        <input type="text" asp-for="ProductImageUrl" class="form-control" />
+                        <br />
+                        <label>Ürün kategorisi</label>
+                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryValues, new { @class = "form-select" })
+                        <br />
+                        <label>Ürün açıklaması</label>
+                        <textarea asp-for="ProductDescription" class="form-control" rows="5"></textarea>
+                        <br />
+                        <button class="btn btn-primary">ürünü tanımla</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

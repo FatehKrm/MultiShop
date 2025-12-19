@@ -1,8 +1,9 @@
-﻿@model IEnumerable<MultiShop.DtoLayer.CatalogDtos.CategoryDtos.ResultCategoryDto>
+﻿@using MultiShop.DtoLayer.CatalogDtos.ProductDtos
+@model IEnumerable<ResultProductDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
-    int coutn = 0;
+    int count = 0;
 }
 
 <section class="content container-fluid">
@@ -15,8 +16,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kategori Adı</th>
-                                <th>Sil</th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün fiyatı</th>
+                                <th>Ürüne ait kategori</th>
+                                <th>sil</th>
                                 <th>Güncelle</th>
                             </tr>
                         </thead>
@@ -24,19 +27,23 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                coutn++;
+                                count++;
                                 <tr>
-                                    <th scope="row">@coutn</th>
-                                    <td>@item.CategoryName</td>
-                                    <td><a href="/Admin/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td></td>
+                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/Category/CreateCategory" class="btn btn-primary">Yeni kategori girişi</a>
+                    <a href="/Admin/Product/CreateProduct" class="btn btn-primary">Yeni ürün girişi</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
