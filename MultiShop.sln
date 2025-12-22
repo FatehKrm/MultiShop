@@ -47,6 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Cargo.WebApi", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirments", "Requirments", "{17E6C027-EBDD-4BF0-B6B9-2EBB0A02CFF5}"
 	ProjectSection(SolutionItems) = preProject
+		ArchitectureOfEachMicroServices.txt = ArchitectureOfEachMicroServices.txt
 		portNumbers.txt = portNumbers.txt
 	EndProjectSection
 EndProject

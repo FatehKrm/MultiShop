@@ -1,0 +1,5 @@
+1. Baket --> Redis db
+2. Catalog --> Mongo db
+3. Cargo --> N-tire architecture, Mssql db, Generic repository design pattern
+4. Discount --> Dapper db
+5. Order --> Onion architecture with SQRS & Mediator Desigen patterns and Mssql db

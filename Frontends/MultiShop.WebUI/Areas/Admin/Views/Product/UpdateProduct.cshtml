@@ -28,6 +28,9 @@
                         <label>Görsel yolu</label>
                         <input type="text" asp-for="ProductImageUrl" class="form-control" />
                         <br />
+                        <label>Ürün kategorisi</label>
+                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryValues, new { @class = "form-select" })
+                        <br />
                         <label>Açıklama</label>
                         <textarea asp-for="ProductDescription" class="form-control"></textarea>
                         <br />

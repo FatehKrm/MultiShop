@@ -28,15 +28,16 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v0 = "Ürün işlemleri";
 
             var client = _httpClientFactory.CreateClient();
-            var responeMassage = await client.GetAsync("https://localhost:7070/api/Products");
+            var responeMassage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategory");
             if (responeMassage.IsSuccessStatusCode)
             {
                 var jsonData = await responeMassage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
                 return View(values);
             }
             return View();
         }
+        // ekstradan view a gerek yok index içersinde kategori ile birlikte listeledim hata alırsam eğer.
         [HttpGet]
         [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct()
@@ -90,13 +91,31 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("UpdateProduct/{id}")]
         public async Task<IActionResult> UpdateProduct(string id)
         {
+            ViewBag.v1 = "Ana sayfa";
+            ViewBag.v2 = "Ürünler";
+            ViewBag.v3 = "Ürün güncelleme sayfası";
+            ViewBag.v0 = "Ürün işlemleri";
+
             var client = _httpClientFactory.CreateClient();
-            var responseMassage = await client.GetAsync("https://localhost:7070/api/Products/" + id);
+            var ResponseMassage = await client.GetAsync("https://localhost:7070/api/Categories");
+            var JsonData = await ResponseMassage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(JsonData);
+            List<SelectListItem> categoryValues = (from x in values
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryId
+                                                   }).ToList(); // category name html sayfasında kullanıcının göreceği değer ve 
+                                                                // values ise category name i temsil eden id dir ve ona göre veri çekilir select ile
+            ViewBag.CategoryValues = categoryValues;
+
+            var client1 = _httpClientFactory.CreateClient();
+            var responseMassage = await client1.GetAsync("https://localhost:7070/api/Products/" + id);
             if (responseMassage.IsSuccessStatusCode)
             {
-                var JsonData = await responseMassage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateProductDto>(JsonData);
-                return View(values);
+                var JsonData1 = await responseMassage.Content.ReadAsStringAsync();
+                var values1 = JsonConvert.DeserializeObject<UpdateProductDto>(JsonData1);
+                return View(values1);
             }
             return View();
         }

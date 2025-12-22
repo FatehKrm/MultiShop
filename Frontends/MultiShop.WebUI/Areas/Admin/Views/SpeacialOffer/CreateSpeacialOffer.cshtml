@@ -1,0 +1,34 @@
+﻿@using MultiShop.DtoLayer.CatalogDtos.SpeacialOfferDtos
+@model CreateSpeacialOfferDto
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "CreateSpeacialOffer";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>özel teklifleri ekleme sayfası</h4>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Özel teklif başlığı</label>
+                        <input type="text" asp-for="Title" class="form-control" />
+                        <br />
+                        <label>Özel teklif alt başlığı</label>
+                        <input type="text" asp-for="SubTitle" class="form-control" />
+                        <br />
+                        <label>Özel teklif Resim url'si</label>
+                        <input type="text" asp-for="ImageUrl" class="form-control" />
+                        <br />
+                        <button class="btn btn-primary">Özel teklifi tanımla</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
