@@ -1051,7 +1051,7 @@ MIT License - Feel free to use this project as a learning resource.
 
 -  GitHub: [@FatehKrm](https://github.com/FatehKrm)
 -  LinkedIn: [Fateh Karampour](https://www.linkedin.com/in/fateh-karampour-5288a32b5)
--  Email: fatehkarampour@outlook.com
+-  Email: fatehkarampour@gmail.com
 
 ---
 
