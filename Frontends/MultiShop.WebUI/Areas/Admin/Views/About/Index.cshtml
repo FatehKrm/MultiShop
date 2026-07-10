@@ -1,0 +1,44 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Kategori Listesi</h4>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Açıklama</th>
+                                <th>Adress</th>
+                                <th>Email</th>
+                                <th>Telefon</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        @*Api consume will be here *@  
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Description</td>
+                                    <td>@item.Adress</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td><a href="/Admin/About/DeleteAbout/@item.AbooutId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/About/UpdateAbout/@item.AbooutId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/About/CreateAbout" class="btn btn-primary">Yeni kategori girişi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

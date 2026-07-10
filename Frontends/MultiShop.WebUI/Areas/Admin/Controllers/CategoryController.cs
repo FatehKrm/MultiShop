@@ -104,7 +104,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
-
     }
 }
 // kategori ile ilgili tüm işlemler bu controller da yer almaktatır. Api ile iletişim kurup veriler asenkron 
