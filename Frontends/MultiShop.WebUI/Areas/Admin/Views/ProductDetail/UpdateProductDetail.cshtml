@@ -1,0 +1,37 @@
+﻿@using MultiShop.DtoLayer.CatalogDtos.ProductDetailDtos
+@model UpdateProductDetailDto
+@{
+    ViewData["Title"] = "UpdateProductDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>ürün açıklama ve bilgileri güncelleme sayfası</h4>
+                <hr />
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <input type="hidden" asp-for="ProductDetailId" />
+                        <input type="hidden" asp-for="ProductId" />
+
+                        <label>Ürün Açıklama</label>
+                        <textarea rows="5" asp-for="ProductDescription" class="form-control"></textarea>
+
+                        <br />
+
+                        <label>Ürün Bilgisi</label>
+                        <textarea rows="4" asp-for="ProductInfo" class="form-control"></textarea>
+
+                        <br />
+
+                        <button class="btn btn-success">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

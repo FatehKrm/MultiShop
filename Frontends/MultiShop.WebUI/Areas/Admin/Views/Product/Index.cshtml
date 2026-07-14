@@ -21,6 +21,8 @@
                                 <th>Ürün kategorisi</th>
                                 <th>sil</th>
                                 <th>Güncelle</th>
+                                <th>Ürün görselleri</th>
+                                <th>Açıklama ve bilgi</th>
                             </tr>
                         </thead>
                         @*Api consume will be here *@  
@@ -35,6 +37,8 @@
                                     <td>@item.Category.CategoryName</td>
                                     <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
                                     <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
+                                    <td><a href="/Admin/ProductImage/ProductImageDetail/@item.ProductId" class="btn btn-warning">Görüntüle</a></td>
+                                    <td><a href="/Admin/ProductDetail/UpdateProductDetail/@item.ProductId" class="btn btn-info">Açıklama ve bilgi</a></td>
                                 </tr>
                             }
                         </tbody>

@@ -1,25 +1,21 @@
-﻿<div class="col-lg-5 mb-30">
-    <div id="product-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner bg-light">
+﻿@model GetByIdProductImageDto
+<div class="col-lg-5 mb-30">
+    <div id="product-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner bg-light rounded">
             <div class="carousel-item active">
-                <img class="w-100 h-100" src="~/Images/ProductDetailDemo/01.jpg" alt="Image">
+                <img class="w-100 h-100" src="@Model.Image1" alt="Ürün Görseli 1" style="object-fit: cover;">
             </div>
             <div class="carousel-item">
-                <img class="w-100 h-100" src="~/Images/ProductDetailDemo/02.jpg" alt="Image">
+                <img class="w-100 h-100" src="@Model.Image2" alt="Ürün Görseli 2" style="object-fit: cover;">
             </div>
             <div class="carousel-item">
-                <img class="w-100 h-100" src="~/Images/ProductDetailDemo/03.jpg" alt="Image">
+                <img class="w-100 h-100" src="@Model.Image3" alt="Ürün Görseli 3" style="object-fit: cover;">
             </div>
             <div class="carousel-item">
-                <img class="w-100 h-100" src="~/Images/ProductDetailDemo/04.jpg" alt="Image">
-            </div>
-            <div class="carousel-item">
-                <img class="w-100 h-100" src="~/Images/ProductDetailDemo/05.jpg" alt="Image">
-            </div>
-            <div class="carousel-item">
-                <img class="w-100 h-100" src="~/Images/ProductDetailDemo/06.jpg" alt="Image">
+                <img class="w-100 h-100" src="@Model.Image4" alt="Ürün Görseli 4" style="object-fit: cover;">
             </div>
         </div>
+
         <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
             <i class="fa fa-2x fa-angle-left text-dark"></i>
         </a>
@@ -27,4 +23,40 @@
             <i class="fa fa-2x fa-angle-right text-dark"></i>
         </a>
     </div>
+
+    <!-- Küçük görsel (thumbnail) navigasyonu -->
+    <div class="d-flex justify-content-center mt-3" id="product-thumbnails">
+        <img src="@Model.Image1" class="img-thumbnail mx-1 thumbnail-nav active" data-slide-to="0" style="width:60px; height:60px; object-fit:cover; cursor:pointer;">
+        <img src="@Model.Image2" class="img-thumbnail mx-1 thumbnail-nav" data-slide-to="1" style="width:60px; height:60px; object-fit:cover; cursor:pointer;">
+        <img src="@Model.Image3" class="img-thumbnail mx-1 thumbnail-nav" data-slide-to="2" style="width:60px; height:60px; object-fit:cover; cursor:pointer;">
+        <img src="@Model.Image4" class="img-thumbnail mx-1 thumbnail-nav" data-slide-to="3" style="width:60px; height:60px; object-fit:cover; cursor:pointer;">
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var $carousel = $('#product-carousel');
+
+        // Thumbnail'a tıklayınca ilgili slide'a git
+        $('.thumbnail-nav').on('click', function () {
+            var index = $(this).data('slide-to');
+            $carousel.carousel(index);
+        });
+
+        // Slide değişince aktif thumbnail'ı güncelle
+        $carousel.on('slid.bs.carousel', function (e) {
+            var index = $(e.relatedTarget).index();
+            $('.thumbnail-nav').removeClass('active');
+            $('.thumbnail-nav').eq(index).addClass('active');
+        });
+    });
+</script>
+
+<style>
+    .thumbnail-nav.active {
+        border: 2px solid #007bff;
+    }
+    #product-carousel .carousel-item img {
+        height: 400px; /* istediğin yüksekliğe göre ayarla */
+    }
+</style>
